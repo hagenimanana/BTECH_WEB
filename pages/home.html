@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BTech Level 8 — Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg1:#0f1724;
+            --bg2:#07112a;
+            --accent:#6ee7b7;
+            --muted:#9aa7bf;
+            --card:#0b1220;
+            --glass: rgba(255,255,255,0.03);
+            --glass-2: rgba(255,255,255,0.02);
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0;
+            font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color:#e6eef8;
+            background: linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 60%);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.45;
+            padding-bottom:60px;
+        }
+        .wrap{max-width:1100px;margin:36px auto;padding:28px;}
+        header{
+            display:flex;align-items:center;justify-content:space-between;
+            gap:12px;margin-bottom:22px;
+        }
+        .brand{
+            display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;
+        }
+        .logo{
+            width:56px;height:56px;border-radius:10px;
+            background: linear-gradient(135deg,#1f2937,#0ea5a8);
+            display:grid;place-items:center;font-weight:800;color:#072023;
+            box-shadow:0 6px 24px rgba(2,6,23,0.6), inset 0 -6px 18px rgba(255,255,255,0.03);
+        }
+        .brand h1{font-size:18px;margin:0}
+        nav{display:flex;gap:14px;align-items:center}
+        .nav-link{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600;font-size:14px}
+        .nav-link:hover{background:var(--glass);color:var(--accent)}
+        .cta{background:linear-gradient(90deg,#06b6d4,#34d399);color:#042427;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none;box-shadow:0 6px 18px rgba(3,15,18,0.45)}
+        /* Hero */
+        .hero{
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            padding:28px;border-radius:14px;display:grid;grid-template-columns:1fr 380px;gap:22px;align-items:center;
+            box-shadow: 0 8px 40px rgba(2,6,23,0.55);
+        }
+        .hero h2{margin:0;font-size:30px;letter-spacing:-0.4px}
+        .hero p{color:var(--muted);margin-top:10px}
+        .actions{margin-top:18px;display:flex;gap:12px;align-items:center}
+        .btn{
+            padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,0.04);
+            background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)
+        }
+        .btn.primary{background:linear-gradient(90deg,#06b6d4,#34d399);color:#042427;box-shadow:0 8px 20px rgba(52,211,153,0.12)}
+        .stats{display:flex;gap:14px;margin-top:18px}
+        .stat{background:var(--glass-2);padding:10px 12px;border-radius:10px;font-weight:700}
+        /* Right card (quick links + RP image) */
+        .card{
+            background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            padding:16px;border-radius:12px;
+        }
+        .rp-preview{height:200px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#041123,#08314a);box-shadow:inset 0 -30px 60px rgba(0,0,0,0.4)}
+        .small-links{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+        .chip{background:var(--card);padding:8px 10px;border-radius:10px;font-size:13px;color:var(--muted)}
+        /* Projects grid */
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:22px}
+        .project{
+            background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            border-radius:12px;padding:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);
+            transition:transform .18s ease, box-shadow .18s ease;
+        }
+        .project:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+        .img{
+            height:140px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,#082a3f,#16304a);
+            margin-bottom:12px;position:relative;overflow:hidden;
+        }
+        .img svg{width:100%;height:100%;object-fit:cover}
+        .tag{display:inline-block;background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:999px;font-size:12px;color:var(--muted);margin-right:8px}
+        .title{font-weight:700;margin:6px 0 4px}
+        .desc{font-size:13px;color:var(--muted);margin-bottom:12px}
+        .card-actions{display:flex;gap:8px;align-items:center}
+        .ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:10px;color:var(--muted);font-weight:700}
+        /* Modal */
+        .modal{
+            position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(3,7,18,0.6);z-index:60;padding:20px;
+        }
+        .modal.open{display:flex}
+        .modal-card{max-width:900px;width:100%;border-radius:12px;background:linear-gradient(180deg,#031122,#042033);padding:14px;box-shadow:0 40px 120px rgba(2,6,23,0.8)}
+        .modal img{max-width:100%;border-radius:8px;display:block}
+        .close{background:transparent;border:0;color:var(--muted);font-weight:700;padding:8px 12px;border-radius:8px}
+        footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+        @media (max-width:880px){
+            .hero{grid-template-columns:1fr;gap:12px}
+            .wrap{padding:16px}
+            .logo{width:46px;height:46px}
+            .brand h1{font-size:16px}
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <a class="brand" href="#">
+                <div class="logo">B8</div>
+                <div>
+                    <h1>BTech — Level 8</h1>
+                    <div style="font-size:12px;color:var(--muted)">Final year dashboard & projects</div>
+                </div>
+            </a>
+            <nav>
+                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="/about">about Us</a>
+                <a class="nav-link" href="/contactus">Contact Us</a>
+                <a class="nav-link" href="/garelly">Garelly</a>
+                <!-- <a class="cta" href="#">Create Project</a> -->
+            </nav>
+        </header>
+
+        <section class="hero" aria-labelledby="hero-title">
+            <div>
+                <h2 id="hero-title">Welcome, Level 8 — Build, Research, Graduate</h2>
+                <p>Curated space for final-year BTech students: manage modules, showcase capstone projects, track research progress and share RP images (Research/Project images).</p>
+
+                <div class="actions">
+                    <a class="btn primary" href="#">Start New Project</a>
+                    <a class="btn" href="#">Explore Modules</a>
+                    <a class="btn" href="#">View Research Guide</a>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">24 Projects</div>
+                    <div class="stat">8 Groups</div>
+                    <div class="stat">120 Resources</div>
+                </div>
+            </div>
+
+            <aside class="card" aria-label="quick panel">
+                <div style="display:flex;gap:12px;align-items:center;justify-content:space-between">
+                    <div>
+                        <div style="font-weight:800">Quick Links</div>
+                        <div style="color:var(--muted);font-size:13px;margin-top:6px">Jump directly to common actions</div>
+                    </div>
+                    <div style="text-align:right;color:var(--muted)">Level 8 • 2024</div>
+                </div>
+
+                <div class="rp-preview" style="margin-top:12px" role="img" aria-label="RP preview image">
+                    <!-- Decorative RP image (SVG placeholder) -->
+                    <svg viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                                <stop offset="0" stop-color="#0ea5a8"/>
+                                <stop offset="1" stop-color="#06b6d4"/>
+                            </linearGradient>
+                            <filter id="grain">
+                                <feTurbulence baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
+                                <feColorMatrix type="saturate" values="0"/>
+                                <feBlend mode="overlay"/>
+                            </filter>
+                        </defs>
+                        <rect width="100%" height="100%" fill="#082033"/>
+                        <g opacity="0.12">
+                            <rect x="0" y="0" width="600" height="360" fill="url(#g1)"/>
+                        </g>
+                        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="84" font-family="Inter, sans-serif" font-weight="800" fill="rgba(255,255,255,0.95)">RP</text>
+                        <text x="50%" y="72%" dominant-baseline="middle" text-anchor="middle" font-size="18" font-family="Inter, sans-serif" fill="rgba(255,255,255,0.6)">Research / Project Image</text>
+                    </svg>
+                </div>
+
+                <div class="small-links">
+                    <div class="chip">My Projects</div>
+                    <div class="chip">Capstone</div>
+                    <div class="chip">Mentors</div>
+                    <div class="chip">Timetable</div>
+                    <div class="chip">Submission</div>
+                </div>
+            </aside>
+        </section>
+
+        <h3 style="margin-top:24px">Latest Projects & RP Images</h3>
+
+        <div class="grid" role="list">
+            <!-- Project card 1 -->
+            <article class="project" role="listitem" aria-labelledby="p1">
+                <div class="img" data-src="rp1">
+                    <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                        <defs>
+                            <linearGradient id="gp1" x1="0" x2="1"><stop offset="0" stop-color="#0ea5a8"/><stop offset="1" stop-color="#06b6d4"/></linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="#041726"/>
+                        <g opacity="0.12"><rect width="100%" height="100%" fill="url(#gp1)"/></g>
+                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="52" font-weight="800" fill="#e6f7f0">RP</text>
+                        <text x="50%" y="72%" text-anchor="middle" font-size="16" fill="#bfeee0">Image — Autonomous Vehicle Simulation</text>
+                    </svg>
+                </div>
+                <div class="tag">AI • Embedded</div>
+                <div class="title" id="p1">Autonomous Navigation — Group A</div>
+                <div class="desc">Simulation results, dataset snapshots and hardware photos collected across trials.</div>
+                <div class="card-actions">
+                    <button class="ghost" data-view="rp1">View Image</button>
+                    <button class="ghost">Open Project</button>
+                </div>
+            </article>
+
+            <!-- Project card 2 -->
+            <article class="project" role="listitem" aria-labelledby="p2">
+                <div class="img" data-src="rp2">
+                    <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                        <rect width="100%" height="100%" fill="#06162a"/>
+                        <g opacity="0.12"><rect width="100%" height="100%" fill="linearGradient"/></g>
+                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="52" font-weight="800" fill="#ffd6a5">RP</text>
+                        <text x="50%" y="72%" text-anchor="middle" font-size="16" fill="#ffd6a5">Image — Energy Harvesting</text>
+                    </svg>
+                </div>
+                <div style="margin-top:6px">
+                    <span class="tag">Power</span><span class="tag">Hardware</span>
+                </div>
+                <div class="title" id="p2">Nano Energy Harvester</div>
+                <div class="desc">Prototype photographs, testbench captures and oscilloscope traces in RP images.</div>
+                <div class="card-actions">
+                    <button class="ghost" data-view="rp2">View Image</button>
+                    <button class="ghost">Open Project</button>
+                </div>
+            </article>
+
+            <!-- Project card 3 -->
+            <article class="project" role="listitem" aria-labelledby="p3">
+                <div class="img" data-src="rp3">
+                    <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                        <rect width="100%" height="100%" fill="#072031"/>
+                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="52" font-weight="800" fill="#f7a8b8">RP</text>
+                        <text x="50%" y="72%" text-anchor="middle" font-size="16" fill="#f7a8b8">Image — WebApp UI</text>
+                    </svg>
+                </div>
+                <div style="margin-top:6px">
+                    <span class="tag">Web</span><span class="tag">UI/UX</span>
+                </div>
+                <div class="title" id="p3">Smart Campus Portal</div>
+                <div class="desc">Screenshots and concept art included as RP images for deliverables and presentations.</div>
+                <div class="card-actions">
+                    <button class="ghost" data-view="rp3">View Image</button>
+                    <button class="ghost">Open Project</button>
+                </div>
+            </article>
+
+            <!-- Project card 4 -->
+            <article class="project" role="listitem" aria-labelledby="p4">
+                <div class="img" data-src="rp4">
+                    <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                        <rect width="100%" height="100%" fill="#081229"/>
+                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="52" font-weight="800" fill="#c7d2fe">RP</text>
+                        <text x="50%" y="72%" text-anchor="middle" font-size="16" fill="#c7d2fe">Image — Robotics</text>
+                    </svg>
+                </div>
+                <div style="margin-top:6px">
+                    <span class="tag">Robotics</span><span class="tag">Controls</span>
+                </div>
+                <div class="title" id="p4">Warehouse Robot</div>
+                <div class="desc">RP images include hardware assembly, test shots and navigation heatmaps used in reports.</div>
+                <div class="card-actions">
+                    <button class="ghost" data-view="rp4">View Image</button>
+                    <button class="ghost">Open Project</button>
+                </div>
+            </article>
+        </div>
+
+        <footer>
+            © <span id="year"></span> BTech Level 8 — Built for students. • Use RP images to attach photos for reports and presentations.
+        </footer>
+    </div>
+
+    <!-- Modal for viewing RP images -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-card" role="document">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                <div style="font-weight:800">RP Image</div>
+                <button class="close" id="closeBtn">Close ✕</button>
+            </div>
+            <div id="modalContent" style="text-align:center">
+                <!-- Image will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // small script to open SVG placeholders as "images" inside modal
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modalContent');
+        const closeBtn = document.getElementById('closeBtn');
+
+        function openModal(name){
+            // create a larger SVG based on name (simple mapping)
+            let svg;
+            switch(name){
+                case 'rp1':
+                    svg = `<svg viewBox="0 0 1200 720" width="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#041726"/><text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" font-size="120" font-weight="800" fill="#e6f7f0">RP</text><text x="50%" y="74%" text-anchor="middle" font-size="26" fill="#bfeee0">Autonomous Vehicle — Simulation</text></svg>`;
+                    break;
+                case 'rp2':
+                    svg = `<svg viewBox="0 0 1200 720" width="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#06162a"/><text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" font-size="120" font-weight="800" fill="#ffd6a5">RP</text><text x="50%" y="74%" text-anchor="middle" font-size="26" fill="#ffd6a5">Nano Energy Harvester — Testbench</text></svg>`;
+                    break;
+                case 'rp3':
+                    svg = `<svg viewBox="0 0 1200 720" width="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#072031"/><text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" font-size="120" font-weight="800" fill="#f7a8b8">RP</text><text x="50%" y="74%" text-anchor="middle" font-size="26" fill="#f7a8b8">Smart Campus Portal — UI Mockups</text></svg>`;
+                    break;
+                case 'rp4':
+                default:
+                    svg = `<svg viewBox="0 0 1200 720" width="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#081229"/><text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" font-size="120" font-weight="800" fill="#c7d2fe">RP</text><text x="50%" y="74%" text-anchor="middle" font-size="26" fill="#c7d2fe">Warehouse Robot — Assembly</text></svg>`;
+            }
+            modalContent.innerHTML = svg;
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden','false');
+        }
+
+        document.querySelectorAll('[data-view]').forEach(btn=>{
+            btn.addEventListener('click', e=>{
+                const id = e.currentTarget.getAttribute('data-view');
+                openModal(id);
+            });
+        });
+
+        closeBtn.addEventListener('click', ()=>{
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden','true');
+            modalContent.innerHTML = '';
+        });
+
+        modal.addEventListener('click', (e)=>{
+            if(e.target === modal) { closeBtn.click(); }
+        });
+
+        // keyboard accessibility: Esc to close
+        document.addEventListener('keydown', (e)=>{
+            if(e.key === 'Escape' && modal.classList.contains('open')) closeBtn.click();
+        });
+    </script>
+</body>
+</html>
