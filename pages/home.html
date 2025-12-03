@@ -3,177 +3,799 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="BTech Level 8 final year dashboard for managing modules, capstone projects, and research progress">
     <title>BTech Level 8 — Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root{
-            --bg1:#0f1724;
-            --bg2:#07112a;
-            --accent:#6ee7b7;
-            --muted:#9aa7bf;
-            --card:#0b1220;
+        /* ==============================================
+           CSS CUSTOM PROPERTIES
+           ============================================== */
+        :root {
+            /* Colors */
+            --bg-primary: #0f1724;
+            --bg-secondary: #07112a;
+            --accent: #6ee7b7;
+            --text-primary: #e6eef8;
+            --text-muted: #9aa7bf;
+            --card-bg: #0b1220;
             --glass: rgba(255,255,255,0.03);
-            --glass-2: rgba(255,255,255,0.02);
+            --glass-light: rgba(255,255,255,0.02);
+            
+            /* Spacing */
+            --spacing-xs: 6px;
+            --spacing-sm: 8px;
+            --spacing-md: 12px;
+            --spacing-lg: 16px;
+            --spacing-xl: 22px;
+            --spacing-2xl: 28px;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+            --radius-xl: 14px;
+            
+            /* Shadows */
+            --shadow-sm: 0 6px 18px rgba(3,15,18,0.45);
+            --shadow-md: 0 8px 40px rgba(2,6,23,0.55);
+            --shadow-lg: 0 18px 40px rgba(2,6,23,0.6);
+            --shadow-xl: 0 40px 120px rgba(2,6,23,0.8);
         }
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-            margin:0;
-            font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-            color:#e6eef8;
-            background: linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 60%);
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-            line-height:1.45;
-            padding-bottom:60px;
+
+        /* ==============================================
+           BASE STYLES
+           ============================================== */
+        * {
+            box-sizing: border-box;
         }
-        .wrap{max-width:1100px;margin:36px auto;padding:28px;}
-        header{
-            display:flex;align-items:center;justify-content:space-between;
-            gap:12px;margin-bottom:22px;
+
+        html, body {
+            height: 100%;
+            margin: 0;
         }
-        .brand{
-            display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;
+
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-primary);
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 60%);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.45;
+            padding-bottom: 60px;
         }
-        .logo{
-            width:56px;height:56px;border-radius:10px;
-            background: linear-gradient(135deg,#1f2937,#0ea5a8);
-            display:grid;place-items:center;font-weight:800;color:#072023;
-            box-shadow:0 6px 24px rgba(2,6,23,0.6), inset 0 -6px 18px rgba(255,255,255,0.03);
+
+        /* ==============================================
+           LAYOUT
+           ============================================== */
+        .container {
+            max-width: 1100px;
+            margin: 36px auto;
+            padding: var(--spacing-2xl);
         }
-        .brand h1{font-size:18px;margin:0}
-        nav{display:flex;gap:14px;align-items:center}
-        .nav-link{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600;font-size:14px}
-        .nav-link:hover{background:var(--glass);color:var(--accent)}
-        .cta{background:linear-gradient(90deg,#06b6d4,#34d399);color:#042427;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none;box-shadow:0 6px 18px rgba(3,15,18,0.45)}
-        /* Hero */
-        .hero{
+
+        /* ==============================================
+           HEADER
+           ============================================== */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand__logo {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #1f2937, #0ea5a8);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            color: #072023;
+            box-shadow: 0 6px 24px rgba(2,6,23,0.6), inset 0 -6px 18px rgba(255,255,255,0.03);
+        }
+
+        .brand__info h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .brand__subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .nav__link {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .nav__link:hover {
+            background: var(--glass);
+            color: var(--accent);
+        }
+
+        /* ==============================================
+           HERO SECTION
+           ============================================== */
+        .hero {
             background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-            padding:28px;border-radius:14px;display:grid;grid-template-columns:1fr 380px;gap:22px;align-items:center;
-            box-shadow: 0 8px 40px rgba(2,6,23,0.55);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: var(--spacing-xl);
+            align-items: center;
+            box-shadow: var(--shadow-md);
         }
-        .hero h2{margin:0;font-size:30px;letter-spacing:-0.4px}
-        .hero p{color:var(--muted);margin-top:10px}
-        .actions{margin-top:18px;display:flex;gap:12px;align-items:center}
-        .btn{
-            padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,0.04);
-            background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)
+
+        .hero__content h2 {
+            margin: 0;
+            font-size: 30px;
+            letter-spacing: -0.4px;
         }
-        .btn.primary{background:linear-gradient(90deg,#06b6d4,#34d399);color:#042427;box-shadow:0 8px 20px rgba(52,211,153,0.12)}
-        .stats{display:flex;gap:14px;margin-top:18px}
-        .stat{background:var(--glass-2);padding:10px 12px;border-radius:10px;font-weight:700}
-        /* Right card (quick links + RP image) */
-        .card{
-            background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-            padding:16px;border-radius:12px;
+
+        .hero__content p {
+            color: var(--text-muted);
+            margin-top: 10px;
         }
-        .rp-preview{height:200px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#041123,#08314a);box-shadow:inset 0 -30px 60px rgba(0,0,0,0.4)}
-        .small-links{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-        .chip{background:var(--card);padding:8px 10px;border-radius:10px;font-size:13px;color:var(--muted)}
-        /* Projects grid */
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:22px}
-        .project{
-            background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-            border-radius:12px;padding:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);
-            transition:transform .18s ease, box-shadow .18s ease;
+
+        .hero__actions {
+            margin-top: 18px;
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+            flex-wrap: wrap;
         }
-        .project:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
-        .img{
-            height:140px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,#082a3f,#16304a);
-            margin-bottom:12px;position:relative;overflow:hidden;
+
+        .hero__stats {
+            display: flex;
+            gap: 14px;
+            margin-top: 18px;
+            flex-wrap: wrap;
         }
-        .img svg{width:100%;height:100%;object-fit:cover}
-        .tag{display:inline-block;background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:999px;font-size:12px;color:var(--muted);margin-right:8px}
-        .title{font-weight:700;margin:6px 0 4px}
-        .desc{font-size:13px;color:var(--muted);margin-bottom:12px}
-        .card-actions{display:flex;gap:8px;align-items:center}
-        .ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:10px;color:var(--muted);font-weight:700}
-        /* Modal */
-        .modal{
-            position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(3,7,18,0.6);z-index:60;padding:20px;
+
+        .stat {
+            background: var(--glass-light);
+            padding: 10px var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-weight: 700;
         }
-        .modal.open{display:flex}
-        .modal-card{max-width:900px;width:100%;border-radius:12px;background:linear-gradient(180deg,#031122,#042033);padding:14px;box-shadow:0 40px 120px rgba(2,6,23,0.8)}
-        .modal img{max-width:100%;border-radius:8px;display:block}
-        .close{background:transparent;border:0;color:var(--muted);font-weight:700;padding:8px 12px;border-radius:8px}
-        footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
-        @media (max-width:880px){
-            .hero{grid-template-columns:1fr;gap:12px}
-            .wrap{padding:16px}
-            .logo{width:46px;height:46px}
-            .brand h1{font-size:16px}
+
+        /* ==============================================
+           BUTTONS
+           ============================================== */
+        .btn {
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.04);
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn--primary {
+            background: linear-gradient(90deg, #06b6d4, #34d399);
+            color: #042427;
+            box-shadow: 0 8px 20px rgba(52,211,153,0.12);
+            border: none;
+        }
+
+        .btn--ghost {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: var(--spacing-sm) 10px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ==============================================
+           CARDS
+           ============================================== */
+        .card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+        }
+
+        .card__header {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .card__title {
+            font-weight: 800;
+        }
+
+        .card__subtitle {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: var(--spacing-xs);
+        }
+
+        .card__meta {
+            text-align: right;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* Quick Links Card */
+        .quick-links__preview {
+            height: 200px;
+            border-radius: var(--radius-md);
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #041123, #08314a);
+            box-shadow: inset 0 -30px 60px rgba(0,0,0,0.4);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .quick-links__chips {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            background: var(--card-bg);
+            padding: var(--spacing-sm) 10px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ==============================================
+           PROJECTS SECTION
+           ============================================== */
+        .section-title {
+            margin-top: 24px;
+            margin-bottom: var(--spacing-lg);
+            font-size: 20px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .project-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-card__image {
+            height: 140px;
+            border-radius: var(--radius-sm);
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #082a3f, #16304a);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .project-card__image svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-card__tags {
+            margin: var(--spacing-xs) 0;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.02);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 999px;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-right: var(--spacing-sm);
+        }
+
+        .project-card__title {
+            font-weight: 700;
+            margin: var(--spacing-xs) 0 4px;
+        }
+
+        .project-card__description {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .project-card__actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+
+        /* ==============================================
+           MODAL
+           ============================================== */
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(3,7,18,0.6);
+            z-index: 60;
+            padding: 20px;
+        }
+
+        .modal--open {
+            display: flex;
+        }
+
+        .modal__content {
+            max-width: 900px;
+            width: 100%;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(180deg, #031122, #042033);
+            padding: 14px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .modal__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .modal__title {
+            font-weight: 800;
+        }
+
+        .modal__body {
+            text-align: center;
+        }
+
+        .modal__body img,
+        .modal__body svg {
+            max-width: 100%;
+            border-radius: var(--radius-sm);
+            display: block;
+        }
+
+        .btn--close {
+            background: transparent;
+            border: 0;
+            color: var(--text-muted);
+            font-weight: 700;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+        }
+
+        /* ==============================================
+           FOOTER
+           ============================================== */
+        .footer {
+            margin-top: var(--spacing-2xl);
+            color: var(--text-muted);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* ==============================================
+           RESPONSIVE DESIGN
+           ============================================== */
+        
+        /* Large tablets and small desktops */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 100%;
+                padding: var(--spacing-lg);
+                margin: 20px auto;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        /* Tablets */
+        @media (max-width: 880px) {
+            .container {
+                padding: var(--spacing-md);
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-lg);
+            }
+
+            .brand {
+                width: 100%;
+            }
+
+            .brand__logo {
+                width: 46px;
+                height: 46px;
+            }
+
+            .brand__info h1 {
+                font-size: 16px;
+            }
+
+            .nav {
+                width: 100%;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: var(--spacing-sm);
+            }
+
+            .nav__link {
+                font-size: 13px;
+                padding: var(--spacing-sm) 10px;
+            }
+
+            .hero {
+                padding: var(--spacing-lg);
+            }
+
+            .hero__content h2 {
+                font-size: 26px;
+            }
+
+            .hero__actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: var(--spacing-sm);
+            }
+
+            .btn {
+                text-align: center;
+                width: 100%;
+            }
+
+            .hero__stats {
+                justify-content: space-between;
+            }
+
+            .stat {
+                flex: 1;
+                text-align: center;
+                font-size: 13px;
+            }
+
+            .card__header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-sm);
+            }
+
+            .card__meta {
+                text-align: left;
+            }
+
+            .quick-links__preview {
+                height: 160px;
+            }
+        }
+
+        /* Mobile devices */
+        @media (max-width: 640px) {
+            .container {
+                padding: var(--spacing-sm);
+                margin: var(--spacing-md) auto;
+            }
+
+            .header {
+                margin-bottom: var(--spacing-md);
+            }
+
+            .brand__logo {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+
+            .brand__info h1 {
+                font-size: 15px;
+            }
+
+            .brand__subtitle {
+                font-size: 11px;
+            }
+
+            .nav {
+                gap: var(--spacing-xs);
+            }
+
+            .nav__link {
+                font-size: 12px;
+                padding: var(--spacing-xs) var(--spacing-sm);
+            }
+
+            .hero {
+                padding: var(--spacing-md);
+                gap: var(--spacing-md);
+            }
+
+            .hero__content h2 {
+                font-size: 22px;
+                line-height: 1.3;
+            }
+
+            .hero__content p {
+                font-size: 14px;
+            }
+
+            .hero__actions {
+                margin-top: var(--spacing-md);
+            }
+
+            .btn {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 14px;
+            }
+
+            .hero__stats {
+                flex-direction: row;
+                gap: var(--spacing-sm);
+            }
+
+            .stat {
+                padding: var(--spacing-sm) var(--spacing-sm);
+                font-size: 12px;
+            }
+
+            .card {
+                padding: var(--spacing-md);
+            }
+
+            .card__title {
+                font-size: 15px;
+            }
+
+            .card__subtitle {
+                font-size: 12px;
+            }
+
+            .quick-links__preview {
+                height: 140px;
+            }
+
+            .quick-links__preview svg text:first-of-type {
+                font-size: 60px;
+            }
+
+            .quick-links__preview svg text:last-of-type {
+                font-size: 14px;
+            }
+
+            .quick-links__chips {
+                gap: var(--spacing-xs);
+            }
+
+            .chip {
+                font-size: 11px;
+                padding: var(--spacing-xs) var(--spacing-sm);
+            }
+
+            .section-title {
+                font-size: 18px;
+                margin-top: var(--spacing-lg);
+                margin-bottom: var(--spacing-md);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .project-card {
+                padding: var(--spacing-md);
+            }
+
+            .project-card__image {
+                height: 120px;
+            }
+
+            .project-card__title {
+                font-size: 15px;
+            }
+
+            .project-card__description {
+                font-size: 12px;
+            }
+
+            .project-card__actions {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+
+            .btn--ghost {
+                width: 100%;
+                text-align: center;
+            }
+
+            .tag {
+                font-size: 11px;
+                padding: 4px var(--spacing-xs);
+            }
+
+            .modal {
+                padding: var(--spacing-md);
+            }
+
+            .modal__content {
+                padding: var(--spacing-md);
+            }
+
+            .modal__header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-sm);
+            }
+
+            .btn--close {
+                align-self: flex-end;
+            }
+
+            .footer {
+                font-size: 11px;
+                padding: 0 var(--spacing-sm);
+                line-height: 1.6;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 375px) {
+            .hero__content h2 {
+                font-size: 20px;
+            }
+
+            .hero__stats {
+                flex-direction: column;
+            }
+
+            .stat {
+                width: 100%;
+            }
+
+            .quick-links__chips {
+                justify-content: center;
+            }
+
+            .project-card__image {
+                height: 100px;
+            }
+        }
+
+        /* Landscape mobile orientation */
+        @media (max-width: 880px) and (orientation: landscape) {
+            .hero {
+                grid-template-columns: 1fr 300px;
+            }
+
+            .quick-links__preview {
+                height: 180px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="wrap">
-        <header>
-            <a class="brand" href="#">
-                <div class="logo">B8</div>
-                <div>
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Header -->
+        <header class="header">
+            <a class="brand" href="#" aria-label="BTech Level 8 Home">
+                <div class="brand__logo" aria-hidden="true">B8</div>
+                <div class="brand__info">
                     <h1>BTech — Level 8</h1>
-                    <div style="font-size:12px;color:var(--muted)">Final year dashboard & projects</div>
+                    <div class="brand__subtitle">Final year dashboard & projects</div>
                 </div>
             </a>
-            <nav>
-                <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/about">about Us</a>
-                <a class="nav-link" href="/contactus">Contact Us</a>
-                <a class="nav-link" href="/garelly">Garelly</a>
+            
+            <nav class="nav" aria-label="Main navigation">
+                <a class="nav__link" href="/">Home</a>
+                <a class="nav__link" href="/about">About Us</a>
+                <a class="nav__link" href="/contactus">Contact Us</a>
+                <a class="nav__link" href="/gallery">Gallery</a>
             </nav>
         </header>
 
+        <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-title">
-            <div>
+            <div class="hero__content">
                 <h2 id="hero-title">Welcome, Level 8 — Build, Research, Graduate</h2>
                 <p>Curated space for final-year BTech students: manage modules, showcase capstone projects, track research progress and share RP images (Research/Project images).</p>
 
-                <div class="actions">
-                    <a class="btn primary" href="#">Start New Project</a>
+                <div class="hero__actions">
+                    <a class="btn btn--primary" href="#">Start New Project</a>
                     <a class="btn" href="#">Explore Modules</a>
                     <a class="btn" href="#">View Research Guide</a>
                 </div>
 
-                <div class="stats">
+                <div class="hero__stats">
                     <div class="stat">24 Projects</div>
                     <div class="stat">8 Groups</div>
                     <div class="stat">120 Resources</div>
                 </div>
             </div>
 
-            <aside class="card" aria-label="quick panel">
-                <div style="display:flex;gap:12px;align-items:center;justify-content:space-between">
+            <!-- Quick Links Aside -->
+            <aside class="card" aria-label="Quick access panel">
+                <div class="card__header">
                     <div>
-                        <div style="font-weight:800">Quick Links</div>
-                        <div style="color:var(--muted);font-size:13px;margin-top:6px">Jump directly to common actions</div>
+                        <div class="card__title">Quick Links</div>
+                        <div class="card__subtitle">Jump directly to common actions</div>
                     </div>
-                    <div style="text-align:right;color:var(--muted)">Level 8 • 2024</div>
+                    <div class="card__meta">Level 8 • 2024</div>
                 </div>
 
-                <div class="rp-preview" style="margin-top:12px" role="img" aria-label="RP preview image">
-                    <!-- Decorative RP image (SVG placeholder) -->
+                <div class="quick-links__preview" role="img" aria-label="Research and Project preview">
                     <svg viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                            <linearGradient id="hero-gradient" x1="0" x2="1" y1="0" y2="1">
                                 <stop offset="0" stop-color="#0ea5a8"/>
                                 <stop offset="1" stop-color="#06b6d4"/>
                             </linearGradient>
-                            <filter id="grain">
-                                <feTurbulence baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
-                                <feColorMatrix type="saturate" values="0"/>
-                                <feBlend mode="overlay"/>
-                            </filter>
                         </defs>
                         <rect width="100%" height="100%" fill="#082033"/>
                         <g opacity="0.12">
-                            <rect x="0" y="0" width="600" height="360" fill="url(#g1)"/>
+                            <rect width="100%" height="100%" fill="url(#hero-gradient)"/>
                         </g>
                         <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="84" font-family="Inter, sans-serif" font-weight="800" fill="rgba(255,255,255,0.95)">RP</text>
                         <text x="50%" y="72%" dominant-baseline="middle" text-anchor="middle" font-size="18" font-family="Inter, sans-serif" fill="rgba(255,255,255,0.6)">Research / Project Image</text>
                     </svg>
                 </div>
 
-                <div class="small-links">
+                <div class="quick-links__chips">
                     <div class="chip">My Projects</div>
                     <div class="chip">Capstone</div>
                     <div class="chip">Mentors</div>
@@ -183,161 +805,272 @@
             </aside>
         </section>
 
-        <h3 style="margin-top:24px">Latest Projects & RP Images</h3>
+        <!-- Projects Section -->
+        <h3 class="section-title">Latest Projects & RP Images</h3>
 
-        <div class="grid" role="list">
-            <!-- Project card 1 -->
-            <article class="project" role="listitem" aria-labelledby="p1">
-                <div class="img" data-src="rp1">
+        <div class="projects-grid" role="list">
+            
+            <!-- Project 1: Autonomous Navigation -->
+            <article class="project-card" role="listitem">
+                <div class="project-card__image" data-view="rp1" tabindex="0" role="button" aria-label="View Autonomous Vehicle image">
                     <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                         <defs>
-                            <linearGradient id="gp1" x1="0" x2="1"><stop offset="0" stop-color="#0ea5a8"/><stop offset="1" stop-color="#06b6d4"/></linearGradient>
+                            <linearGradient id="gradient-p1" x1="0" x2="1">
+                                <stop offset="0" stop-color="#0ea5a8"/>
+                                <stop offset="1" stop-color="#06b6d4"/>
+                            </linearGradient>
                         </defs>
                         <rect width="100%" height="100%" fill="#041726"/>
-                        <g opacity="0.12"><rect width="100%" height="100%" fill="url(#gp1)"/></g>
+                        <g opacity="0.12"><rect width="100%" height="100%" fill="url(#gradient-p1)"/></g>
                         <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="52" font-weight="800" fill="#e6f7f0">RP</text>
                         <text x="50%" y="72%" text-anchor="middle" font-size="16" fill="#bfeee0">Image — Autonomous Vehicle Simulation</text>
                     </svg>
                 </div>
-                <div class="tag">AI • Embedded</div>
-                <div class="title" id="p1">Autonomous Navigation — Group A</div>
-                <div class="desc">Simulation results, dataset snapshots and hardware photos collected across trials.</div>
-                <div class="card-actions">
-                    <button class="ghost" data-view="rp1">View Image</button>
-                    <button class="ghost">Open Project</button>
+                <div class="project-card__tags">
+                    <span class="tag">AI</span>
+                    <span class="tag">Embedded</span>
+                </div>
+                <h4 class="project-card__title">Autonomous Navigation — Group A</h4>
+                <p class="project-card__description">Simulation results, dataset snapshots and hardware photos collected across trials.</p>
+                <div class="project-card__actions">
+                    <button class="btn btn--ghost" data-view="rp1">View Image</button>
+                    <button class="btn btn--ghost">Open Project</button>
                 </div>
             </article>
 
-            <!-- Project card 2 -->
-            <article class="project" role="listitem" aria-labelledby="p2">
-                <div class="img" data-src="rp2">
+            <!-- Project 2: Energy Harvesting -->
+            <article class="project-card" role="listitem">
+                <div class="project-card__image" data-view="rp2" tabindex="0" role="button" aria-label="View Energy Harvesting image">
                     <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                         <rect width="100%" height="100%" fill="#06162a"/>
-                        <g opacity="0.12"><rect width="100%" height="100%" fill="linearGradient"/></g>
                         <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="52" font-weight="800" fill="#ffd6a5">RP</text>
                         <text x="50%" y="72%" text-anchor="middle" font-size="16" fill="#ffd6a5">Image — Energy Harvesting</text>
                     </svg>
                 </div>
-                <div style="margin-top:6px">
-                    <span class="tag">Power</span><span class="tag">Hardware</span>
+                <div class="project-card__tags">
+                    <span class="tag">Power</span>
+                    <span class="tag">Hardware</span>
                 </div>
-                <div class="title" id="p2">Nano Energy Harvester</div>
-                <div class="desc">Prototype photographs, testbench captures and oscilloscope traces in RP images.</div>
-                <div class="card-actions">
-                    <button class="ghost" data-view="rp2">View Image</button>
-                    <button class="ghost">Open Project</button>
+                <h4 class="project-card__title">Nano Energy Harvester</h4>
+                <p class="project-card__description">Prototype photographs, testbench captures and oscilloscope traces in RP images.</p>
+                <div class="project-card__actions">
+                    <button class="btn btn--ghost" data-view="rp2">View Image</button>
+                    <button class="btn btn--ghost">Open Project</button>
                 </div>
             </article>
 
-            <!-- Project card 3 -->
-            <article class="project" role="listitem" aria-labelledby="p3">
-                <div class="img" data-src="rp3">
+            <!-- Project 3: Smart Campus Portal -->
+            <article class="project-card" role="listitem">
+                <div class="project-card__image" data-view="rp3" tabindex="0" role="button" aria-label="View WebApp UI image">
                     <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                         <rect width="100%" height="100%" fill="#072031"/>
                         <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="52" font-weight="800" fill="#f7a8b8">RP</text>
                         <text x="50%" y="72%" text-anchor="middle" font-size="16" fill="#f7a8b8">Image — WebApp UI</text>
                     </svg>
                 </div>
-                <div style="margin-top:6px">
-                    <span class="tag">Web</span><span class="tag">UI/UX</span>
+                <div class="project-card__tags">
+                    <span class="tag">Web</span>
+                    <span class="tag">UI/UX</span>
                 </div>
-                <div class="title" id="p3">Smart Campus Portal</div>
-                <div class="desc">Screenshots and concept art included as RP images for deliverables and presentations.</div>
-                <div class="card-actions">
-                    <button class="ghost" data-view="rp3">View Image</button>
-                    <button class="ghost">Open Project</button>
+                <h4 class="project-card__title">Smart Campus Portal</h4>
+                <p class="project-card__description">Screenshots and concept art included as RP images for deliverables and presentations.</p>
+                <div class="project-card__actions">
+                    <button class="btn btn--ghost" data-view="rp3">View Image</button>
+                    <button class="btn btn--ghost">Open Project</button>
                 </div>
             </article>
 
-            <!-- Project card 4 -->
-            <article class="project" role="listitem" aria-labelledby="p4">
-                <div class="img" data-src="rp4">
+            <!-- Project 4: Warehouse Robot -->
+            <article class="project-card" role="listitem">
+                <div class="project-card__image" data-view="rp4" tabindex="0" role="button" aria-label="View Robotics image">
                     <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                         <rect width="100%" height="100%" fill="#081229"/>
                         <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="52" font-weight="800" fill="#c7d2fe">RP</text>
                         <text x="50%" y="72%" text-anchor="middle" font-size="16" fill="#c7d2fe">Image — Robotics</text>
                     </svg>
                 </div>
-                <div style="margin-top:6px">
-                    <span class="tag">Robotics</span><span class="tag">Controls</span>
+                <div class="project-card__tags">
+                    <span class="tag">Robotics</span>
+                    <span class="tag">Controls</span>
                 </div>
-                <div class="title" id="p4">Warehouse Robot</div>
-                <div class="desc">RP images include hardware assembly, test shots and navigation heatmaps used in reports.</div>
-                <div class="card-actions">
-                    <button class="ghost" data-view="rp4">View Image</button>
-                    <button class="ghost">Open Project</button>
+                <h4 class="project-card__title">Warehouse Robot</h4>
+                <p class="project-card__description">RP images include hardware assembly, test shots and navigation heatmaps used in reports.</p>
+                <div class="project-card__actions">
+                    <button class="btn btn--ghost" data-view="rp4">View Image</button>
+                    <button class="btn btn--ghost">Open Project</button>
                 </div>
             </article>
+            
         </div>
 
-        <footer>
+        <!-- Footer -->
+        <footer class="footer">
             © <span id="year"></span> BTech Level 8 — Built for students. • Use RP images to attach photos for reports and presentations.
         </footer>
     </div>
 
-    <!-- Modal for viewing RP images -->
-    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="modal-card" role="document">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-                <div style="font-weight:800">RP Image</div>
-                <button class="close" id="closeBtn">Close ✕</button>
+    <!-- Modal for RP Images -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
+        <div class="modal__content" role="document">
+            <div class="modal__header">
+                <div id="modal-title" class="modal__title">RP Image</div>
+                <button class="btn btn--close" id="closeBtn" aria-label="Close modal">Close ✕</button>
             </div>
-            <div id="modalContent" style="text-align:center">
-                <!-- Image will be injected here -->
+            <div id="modalContent" class="modal__body">
+                <!-- Dynamic content will be injected here -->
             </div>
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
-        // small script to open SVG placeholders as "images" inside modal
-        document.getElementById('year').textContent = new Date().getFullYear();
-        const modal = document.getElementById('modal');
-        const modalContent = document.getElementById('modalContent');
-        const closeBtn = document.getElementById('closeBtn');
-
-        function openModal(name){
-            // create a larger SVG based on name (simple mapping)
-            let svg;
-            switch(name){
-                case 'rp1':
-                    svg = `<svg viewBox="0 0 1200 720" width="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#041726"/><text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" font-size="120" font-weight="800" fill="#e6f7f0">RP</text><text x="50%" y="74%" text-anchor="middle" font-size="26" fill="#bfeee0">Autonomous Vehicle — Simulation</text></svg>`;
-                    break;
-                case 'rp2':
-                    svg = `<svg viewBox="0 0 1200 720" width="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#06162a"/><text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" font-size="120" font-weight="800" fill="#ffd6a5">RP</text><text x="50%" y="74%" text-anchor="middle" font-size="26" fill="#ffd6a5">Nano Energy Harvester — Testbench</text></svg>`;
-                    break;
-                case 'rp3':
-                    svg = `<svg viewBox="0 0 1200 720" width="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#072031"/><text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" font-size="120" font-weight="800" fill="#f7a8b8">RP</text><text x="50%" y="74%" text-anchor="middle" font-size="26" fill="#f7a8b8">Smart Campus Portal — UI Mockups</text></svg>`;
-                    break;
-                case 'rp4':
-                default:
-                    svg = `<svg viewBox="0 0 1200 720" width="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#081229"/><text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" font-size="120" font-weight="800" fill="#c7d2fe">RP</text><text x="50%" y="74%" text-anchor="middle" font-size="26" fill="#c7d2fe">Warehouse Robot — Assembly</text></svg>`;
+        // ============================================
+        // CONFIGURATION
+        // ============================================
+        const CONFIG = {
+            rpImages: {
+                rp1: {
+                    title: 'Autonomous Vehicle — Simulation',
+                    color: '#e6f7f0',
+                    bg: '#041726'
+                },
+                rp2: {
+                    title: 'Nano Energy Harvester — Testbench',
+                    color: '#ffd6a5',
+                    bg: '#06162a'
+                },
+                rp3: {
+                    title: 'Smart Campus Portal — UI Mockups',
+                    color: '#f7a8b8',
+                    bg: '#072031'
+                },
+                rp4: {
+                    title: 'Warehouse Robot — Assembly',
+                    color: '#c7d2fe',
+                    bg: '#081229'
+                }
             }
-            modalContent.innerHTML = svg;
-            modal.classList.add('open');
-            modal.setAttribute('aria-hidden','false');
+        };
+
+        // ============================================
+        // STATE MANAGEMENT
+        // ============================================
+        const state = {
+            modalOpen: false,
+            currentImage: null
+        };
+
+        // ============================================
+        // DOM ELEMENTS
+        // ============================================
+        const elements = {
+            modal: document.getElementById('modal'),
+            modalContent: document.getElementById('modalContent'),
+            closeBtn: document.getElementById('closeBtn'),
+            yearSpan: document.getElementById('year'),
+            viewButtons: document.querySelectorAll('[data-view]')
+        };
+
+        // ============================================
+        // UTILITY FUNCTIONS
+        // ============================================
+        function generateRPSVG(imageId) {
+            const image = CONFIG.rpImages[imageId] || CONFIG.rpImages.rp4;
+            return `
+                <svg viewBox="0 0 1200 720" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="${image.bg}"/>
+                    <text x="50%" y="48%" text-anchor="middle" dominant-baseline="middle" 
+                          font-size="120" font-weight="800" fill="${image.color}">RP</text>
+                    <text x="50%" y="74%" text-anchor="middle" font-size="26" fill="${image.color}">
+                        ${image.title}
+                    </text>
+                </svg>
+            `;
         }
 
-        document.querySelectorAll('[data-view]').forEach(btn=>{
-            btn.addEventListener('click', e=>{
-                const id = e.currentTarget.getAttribute('data-view');
-                openModal(id);
+        // ============================================
+        // MODAL FUNCTIONS
+        // ============================================
+        function openModal(imageId) {
+            state.modalOpen = true;
+            state.currentImage = imageId;
+            
+            elements.modalContent.innerHTML = generateRPSVG(imageId);
+            elements.modal.classList.add('modal--open');
+            elements.modal.setAttribute('aria-hidden', 'false');
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            state.modalOpen = false;
+            state.currentImage = null;
+            
+            elements.modal.classList.remove('modal--open');
+            elements.modal.setAttribute('aria-hidden', 'true');
+            elements.modalContent.innerHTML = '';
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
+        }
+
+        // ============================================
+        // EVENT HANDLERS
+        // ============================================
+        function handleViewButtonClick(event) {
+            const imageId = event.currentTarget.getAttribute('data-view');
+            if (imageId) {
+                openModal(imageId);
+            }
+        }
+
+        function handleModalBackdropClick(event) {
+            if (event.target === elements.modal) {
+                closeModal();
+            }
+        }
+
+        function handleKeyboardEvents(event) {
+            if (event.key === 'Escape' && state.modalOpen) {
+                closeModal();
+            }
+        }
+
+        function handleImageKeyPress(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                const imageId = event.currentTarget.getAttribute('data-view');
+                if (imageId) {
+                    openModal(imageId);
+                }
+            }
+        }
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        function init() {
+            // Set current year
+            elements.yearSpan.textContent = new Date().getFullYear();
+
+            // Attach event listeners
+            elements.viewButtons.forEach(button => {
+                button.addEventListener('click', handleViewButtonClick);
+                
+                // Add keyboard support for image containers
+                if (button.classList.contains('project-card__image')) {
+                    button.addEventListener('keypress', handleImageKeyPress);
+                }
             });
-        });
 
-        closeBtn.addEventListener('click', ()=>{
-            modal.classList.remove('open');
-            modal.setAttribute('aria-hidden','true');
-            modalContent.innerHTML = '';
-        });
+            elements.closeBtn.addEventListener('click', closeModal);
+            elements.modal.addEventListener('click', handleModalBackdropClick);
+            document.addEventListener('keydown', handleKeyboardEvents);
+        }
 
-        modal.addEventListener('click', (e)=>{
-            if(e.target === modal) { closeBtn.click(); }
-        });
-
-        // keyboard accessibility: Esc to close
-        document.addEventListener('keydown', (e)=>{
-            if(e.key === 'Escape' && modal.classList.contains('open')) closeBtn.click();
-        });
+        // Start the application
+        init();
     </script>
 </body>
 </html>
