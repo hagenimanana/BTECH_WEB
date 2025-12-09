@@ -3,170 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Btech IT Class at Ngoma RP</title>
+    <title>RP Ngoma College</title>
     <style>
-        /* Reset some default styles */
+        /* General Reset */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: #f0f6fc;
-            color: #1a1a1a;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
         }
 
-        /* Top navigation menu */
+        /* Header */
+        header {
+            background-color: #111;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
         nav {
-            width: 100%;
-            padding: 20px 50px;
+            background-color: #222;
             display: flex;
-            justify-content: flex-start;
-            background-color: #f0f6fc;
-            position: absolute;
-            top: 0;
-            left: 0;
+            justify-content: center;
+            padding: 10px 0;
         }
 
         nav a {
-            margin-right: 30px;
+            color: #fff;
             text-decoration: none;
-            color: #1a1a1a;
+            margin: 0 20px;
             font-weight: bold;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #007bff;
+            color: #ffcc00;
         }
 
-        /* Main section */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 150px 50px 50px 50px;
-            max-width: 1200px;
-            margin: auto;
+        /* Welcome Section */
+        .welcome {
+            text-align: center;
+            padding: 50px 20px;
         }
 
-        .hero-text {
-            max-width: 600px;
+        .welcome h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
         }
 
-        .hero-text h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        .welcome p {
+            font-size: 1.2em;
         }
 
-        .hero-text p {
-            font-size: 1.1rem;
+        /* Gallery Section */
+        .gallery {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .gallery h2 {
             margin-bottom: 30px;
-            color: #555;
         }
 
-        .buttons {
+        .gallery-images {
             display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .buttons button {
-            padding: 12px 25px;
-            border: none;
+        .gallery-images img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #ccc;
             border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .get-started {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .get-started:hover {
-            background-color: #0056b3;
-        }
-
-        .learn-more {
-            background-color: white;
-            color: #007bff;
-            border: 2px solid #007bff;
-        }
-
-        .learn-more:hover {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .stats {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .stats div {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #007bff;
-        }
-
-        .hero-image img {
-            max-width: 400px;
-            border-radius: 10px;
-        }
-
-        @media(max-width: 900px){
-            .hero {
-                flex-direction: column;
-                align-items: center;
-                padding-top: 120px;
-            }
-
-            .hero-text {
-                text-align: center;
-            }
-
-            .hero-image {
-                margin-top: 30px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
+    <header>
+        <h1>RP Ngoma College</h1>
+    </header>
+
     <nav>
         <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact Us</a>
+        <a href="#">Gallery</a>
+        <a href="#">About Us</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Btech IT class at Ngoma RP</h1>
-            <p>Achieve your dreams with technology education—the key to global opportunities. Start your journey to academic and professional success today.</p>
-            <div class="buttons">
-                <button class="get-started">Get Started</button>
-                <button class="learn-more">Learn More</button>
-            </div>
-            <div class="stats">
-                <div>10K+ Students</div>
-                <div>4.6 ★ Reviews</div>
-                <div>100+ Partnerships</div>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="https://via.placeholder.com/400x500.png?text=Student+Image" alt="Student Image">
+    <section class="welcome">
+        <h1>Welcome to RP Ngoma College</h1>
+        <p>Providing quality education and skills for the future.</p>
+    </section>
+
+    <section class="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-images">
+            <img src="https://via.placeholder.com/200x150?text=College+Image+1" alt="College Image 1">
+            <img src="https://via.placeholder.com/200x150?text=College+Image+2" alt="College Image 2">
+            <img src="https://via.placeholder.com/200x150?text=College+Image+3" alt="College Image 3">
         </div>
     </section>
 
