@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: node
-          image: btech:dev
+          image: btech:20251209-154704
           imagePullPolicy: Never
           ports:
             - containerPort: 3000
