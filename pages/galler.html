@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | RP Ngoma College</title>
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #0a0a0a, #1f1f1f);
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #141414;
+            display: flex;
+            justify-content: center;
+            padding: 12px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+        }
+
+        nav a {
+            color: #eee;
+            text-decoration: none;
+            margin: 0 25px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s ease-in-out;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #ffcc00;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            padding: 50px 20px 10px;
+        }
+
+        .page-title h1 {
+            font-size: 2.4em;
+            color: #222;
+        }
+
+        .page-title p {
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        /* Gallery Section */
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+        }
+
+        .gallery-container img {
+            width: 250px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: 0.3s ease-in-out;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #ccc;
+            text-align: center;
+            padding: 18px 0;
+            margin-top: 60px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        RP Ngoma College
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About Us</a>
+    </nav>
+
+    <!-- PAGE TITLE -->
+    <section class="page-title">
+        <h1>Gallery</h1>
+        <p>Explore beautiful moments from RP Ngoma College</p>
+    </section>
+
+    <!-- GALLERY ROW 1 -->
+    <div class="gallery-container">
+        <img src="https://via.placeholder.com/250x180?text=Campus+Building" alt="Campus Building">
+        <img src="https://via.placeholder.com/250x180?text=Students+Learning" alt="Students Learning">
+        <img src="https://via.placeholder.com/250x180?text=Classroom" alt="Classroom">
+    </div>
+
+    <!-- GALLERY ROW 2 -->
+    <div class="gallery-container">
+        <img src="https://via.placeholder.com/250x180?text=Workshop" alt="Workshop">
+        <img src="https://via.placeholder.com/250x180?text=School+Event" alt="School Event">
+        <img src="https://via.placeholder.com/250x180?text=ICT+Lab" alt="ICT Lab">
+    </div>
+
+    <!-- GALLERY ROW 3 -->
+    <div class="gallery-container">
+        <img src="https://via.placeholder.com/250x180?text=Library" alt="Library">
+        <img src="https://via.placeholder.com/250x180?text=Graduation" alt="Graduation">
+        <img src="https://via.placeholder.com/250x180?text=Teachers" alt="Teachers">
+    </div>
+
+    <footer>
+        © 2025 RP Ngoma College — All Rights Reserved
+    </footer>
+
+</body>
+</html>
